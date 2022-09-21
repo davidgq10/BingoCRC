@@ -6,14 +6,27 @@
     box-sizing: inherit;
 }
 
+:root {
+    --c-red: #D90429;
+    --c-red-light: #EF233C;
+    --c-gray-dark: #2B2D42;
+    --c-gray: #8D99AE;
+    --c-gray-light: #EDF2F4;
+    --c-white: white;
+    --c-black: rgb(18, 18, 18);
+}
+
 html {
-
     font-size: 62.5%;
-
 }
 
 body {
     box-sizing: border-box;
-    padding: 1rem;
-    background-color: red;
+    background-color: var(--c-gray-light);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: min-content 75vh 1fr;
+    grid-template-columns: 3fr 1fr;
 }
