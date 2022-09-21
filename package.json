@@ -1,0 +1,23 @@
+{
+  "name": "bingo-crc",
+  "version": "1.0.0",
+  "description": "Aplicación juego bingo CRC",
+  "main": "index.js",
+  "dependencies": {
+    "sass": "^1.54.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "compile:sass": "sass sass/main.scss css/style.css -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidgq10/BingoCRC.git"
+  },
+  "author": "David Garbanzo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidgq10/BingoCRC/issues"
+  },
+  "homepage": "https://github.com/davidgq10/BingoCRC#readme"
+}
