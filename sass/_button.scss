@@ -1,0 +1,39 @@
+.btn {
+    cursor: pointer;
+    display: block;
+    position: relative;
+    border-radius: 0;
+    min-width: 10rem;
+    width: 33.33%;
+    height: 90%;
+    border: none;
+    box-shadow: 1px 0px 4px var(--c-gray-dark);
+    transition: all 0.2s ease-in-out;
+    z-index: 50;
+    background: linear-gradient(to right bottom, var(--c-white), var(--c-gray-light));
+
+    &:active {
+        transform: scale(0.97);
+        box-shadow: -1px -1px 4px var(--c-gray-dark);
+        background: linear-gradient(to right bottom, var(--c-white), var(--c-gray-dark));
+    }
+
+    &--blue:hover {
+        color: var(--c-white);
+        background: var(--c-gray-dark);
+
+        img {
+            filter: invert(100%) sepia(0%) saturate(7427%) hue-rotate(23deg) brightness(118%) contrast(118%);
+        }
+
+    }
+
+    &--red:hover {
+        color: var(--c-white);
+        background: var(--c-red);
+
+        img {
+            filter: invert(100%) sepia(0%) saturate(7427%) hue-rotate(23deg) brightness(118%) contrast(118%);
+        }
+    }
+}

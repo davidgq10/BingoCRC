@@ -6,31 +6,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Bingo!!!</title>
+    <title>¡Bingo!</title>
 </head>
 
 <body>
     <div class="grid-container">
-        <nav class="header">
-            <img src="/img/CruzRoja.jpg" class="header__icon" alt="Logo Cruz Roja"></img>
-            <h3 class="header__title">Cruz Roja Costarricense</h3>
-        </nav>
 
-        <main>
-            <ul id="balls_board" class="balls-board">
-            </ul>
-    </div>
-    <div class="recent-ball">
-        last three
-    </div>
-    </main>
-    <div class="sitebar">
-        <div class="rewards">
-            <h2>Reward</h2>
-            <h2>Reward</h2>
-            <h2>Reward</h2>
+
+        <div class="module">
+            <svg width="300px" xmlns="http://www.w3.org/2000/svg" version="1.1">
+                <line class="stroke-3" x1="40" x2="250" y1="100" y2="100" />
+            </svg>
         </div>
-    </div>
+
+
+        <div class="header">
+            <h1 id="myTimeMinute"></h1>
+            <h1 id="myTimeSecond"></h1>
+            <div class="header__title">
+                <img src="/img/CruzRoja.jpg" class="header__icon" alt="Logo Cruz Roja"></img>
+                <h3 class="header__text">Cruz Roja Costarricense</h3>
+            </div>
+
+            <nav class="menu">
+                <button class="btn btn--blue" id="celebrate">
+                    <img src="img/party.svg" alt="Celebrate">
+                    <h5>Celebrar</h5>
+                </button>
+                <button class="btn btn--blue" id="game"> <img src="img/gamepad.svg" alt="new">
+                    <h5>Juegos</h5>
+                </button>
+                <button class="btn btn--blue" id="timer">
+                    <img src="img/timer.svg" alt="Celebrate">
+                    <h5>Temporizador</h5>
+                </button>
+                <button class="btn btn--blue" id="ads"> <img src="img/pincture-collection.svg" alt="ads">
+                    <h5>Anuncios</h5>
+                </button>
+                <button class="btn btn--red" id="restart"> <img src="img/power-restart.svg" alt="restart">
+                    <h5>Reiniciar</h5>
+                </button>
+
+            </nav>
+        </div>
+
+        <ul id="balls_board" class="balls-board">
+        </ul>
+        <div id='recent-ball' class="recent-ball">
+            <h2 id="recent-balls-title">Últimas bolas: </h2>
+        </div>
+
+        <div class="sitebar">
+
+
+
+            <img src="img/imgLetraA.png" alt="">
+            <img src="img/imgLetraE.png" alt="">
+            <img src="img/imgLetraF.png" alt="">
+
+        </div>
+
+
+        <div class="ads">
+            <img src="img/banner_top_pollitosdicen.jpg" alt="ads">
+        </div>
+
+        <div id="celebration" class="celebration hide-modal">
+            <img class="celebration__text" src="img/bingo.png" alt="">
+            <img class="celebration__animation" src="img/confetti.svg" alt="confetti">
+        </div>
+
     </div>
     <script src="js/main.js"></script>
 </body>

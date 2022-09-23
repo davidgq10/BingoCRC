@@ -7,13 +7,16 @@
 }
 
 :root {
-    --c-red: #D90429;
+    --c-red: #d90429;
     --c-red-light: #EF233C;
     --c-gray-dark: #2B2D42;
-    --c-gray: #8D99AE;
+    --c-gray: #b0c7ef;
     --c-gray-light: #EDF2F4;
     --c-white: white;
     --c-black: rgb(18, 18, 18);
+    --c-blue-light: #3CA9EE;
+    --c-green-blue: rgb(15, 149, 154);
+
 }
 
 html {
@@ -26,7 +29,8 @@ body {
 }
 
 .grid-container {
+    height: 100vh;
     display: grid;
-    grid-template-rows: min-content 75vh 1fr;
+    grid-template-rows: min-content 4fr 1fr;
     grid-template-columns: 7fr 2fr;
 }

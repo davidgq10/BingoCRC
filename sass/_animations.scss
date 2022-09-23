@@ -1,0 +1,73 @@
+@keyframes moveBall {
+
+    0%,
+    10%,
+    20%,
+    30%,
+    40%,
+    50%,
+    60%,
+    70% {
+        position: absolute;
+        top: 45%;
+        left: 45%;
+        transform: scale(6);
+        opacity: 100%;
+        cursor: none;
+        box-shadow: none;
+        border: 2px solid var(--c-gray-dark);
+    }
+
+    75% {
+        position: absolute;
+        top: 45%;
+        left: 45%;
+        transform: scale(3);
+        box-shadow: none;
+        border: 5px solid var(--c-gray-dark);
+    }
+
+
+    90% {
+        position: absolute;
+        top: 45%;
+        left: 45%;
+        transform: translate(-20rem, 25rem);
+        box-shadow: none;
+        border: 5px solid var(--c-gray-dark);
+    }
+
+    100% {
+        opacity: 0%;
+        cursor: none;
+    }
+
+
+}
+
+@keyframes scale {
+    0% {
+        transform: scale(1) translateY(5rem);
+
+    }
+
+    50% {
+        transform: scale(1.5) translateY(-5rem);
+
+    }
+
+    100% {
+        transform: scale(1) translateY(5rem);
+
+    }
+
+
+}
+
+@keyframes moveToRight {
+    from {}
+
+    to {
+        transform: translateX(5rem);
+    }
+}
