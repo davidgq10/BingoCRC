@@ -215,6 +215,41 @@ body {
   height: 100vh;
 }
 
+.gameOptions {
+  position: absolute;
+  background-color: var(--c-white);
+  width: 100vw;
+  height: 100vh;
+  z-index: 100;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10rem;
+}
+.gameOptions .btn {
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  max-width: 4rem;
+  max-height: 7rem;
+  float: right;
+}
+.gameOptions__game {
+  max-width: 15rem;
+  max-height: 15rem;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+.gameOptions__game:hover {
+  box-shadow: 4px 8px 12px var(--c-gray);
+  transform: translateY(-2px) scale(1.1);
+}
+.gameOptions__game:active {
+  transform: translateY(2px) scale(1);
+}
+
 @keyframes moveBall {
   0%, 10%, 20%, 30%, 40%, 50%, 60%, 70% {
     position: absolute;
@@ -303,19 +338,6 @@ body {
 }
 .btn--red:hover img {
   filter: invert(100%) sepia(0%) saturate(7427%) hue-rotate(23deg) brightness(118%) contrast(118%);
-}
-
-.module {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-line {
-  stroke: orange;
-  stroke-width: 20;
-  stroke-linecap: round;
 }
 
 /*# sourceMappingURL=style.css.map */

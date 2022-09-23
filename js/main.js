@@ -1,10 +1,10 @@
-'use strict';
-const preventFormater = 1;
+'use strict';const preventFormater = 1;
 const selectedBalls = [];
 let timer = 60;
 
 /////     GET HTML REFERENCES     /////
 const recentBallsContainer = document.getElementById('recent-ball');
+const gameOptionsContainer = document.getElementById('gameOptions');
 const celebration = document.getElementById('celebration');
 const recentBallsTitle = document.getElementById('recent-balls-title');
 const btnCelebrate = document
@@ -27,6 +27,42 @@ celebration.addEventListener('click', () =>
 /////     END GET HTML REFERENCES     /////
 
 /////     START VARIABLES DECLRATION     /////
+const games = [
+  { nombre: 'CartonLleno', imagen: 'img/imgCartonLleno.png' },
+  { nombre: 'Cruz', imagen: 'img/imgCruz.png' },
+  { nombre: 'CuatroEsquinas', imagen: 'img/imgCuatroEsquinas.png' },
+  { nombre: 'Diagonal', imagen: 'img/imgDiagonal.png' },
+  { nombre: 'LetraA', imagen: 'img/imgLetraA.png' },
+  { nombre: 'LetraC', imagen: 'img/imgLetraC.png' },
+  { nombre: 'LetraE', imagen: 'img/imgLetraE.png' },
+  { nombre: 'LetraF', imagen: 'img/imgLetraF.png' },
+  { nombre: 'LetraH', imagen: 'img/imgLetraH.png' },
+  { nombre: 'LetraJ', imagen: 'img/imgLetraJ.png' },
+  { nombre: 'LetraL', imagen: 'img/imgLetraL.png' },
+  { nombre: 'LetraM', imagen: 'img/imgLetraM.png' },
+  { nombre: 'LetraN', imagen: 'img/imgLetraN.png' },
+  { nombre: 'LetraO', imagen: 'img/imgLetraO.png' },
+  { nombre: 'LetraP', imagen: 'img/imgLetraP.png' },
+  { nombre: 'LetraS', imagen: 'img/imgLetraS.png' },
+  { nombre: 'LetraT', imagen: 'img/imgLetraT.png' },
+  { nombre: 'LetraU', imagen: 'img/imgLetraU.png' },
+  { nombre: 'LetraW', imagen: 'img/imgLetraW.png' },
+  { nombre: 'LetraX', imagen: 'img/imgLetraX.png' },
+  { nombre: 'LetraY', imagen: 'img/imgLetraY.png' },
+  { nombre: 'LetraZ', imagen: 'img/imgLetraZ.png' },
+  { nombre: 'LineaHorizontal', imagen: 'img/imgLineaHorizontal.png' },
+  { nombre: 'LineaVertical', imagen: 'img/imgLineaVertical.png' },
+];
+
+const gameOptions = games.forEach(
+  game =>
+    (gameOptionsContainer.innerHTML += `<img  id='${game.nombre}' class='gameOptions__game' src='${game.imagen}' alt='${game.nombre}'>`)
+);
+document.querySelectorAll('.gameOptions__game').forEach(game =>
+  game.addEventListener('click', e => {
+    document.getElementById(e.target.id).classList.add('hide-modal');
+  })
+);
 
 /////     END START VARIABLES DECLRATION     /////
 
@@ -42,6 +78,22 @@ balls.forEach(ball => {
     selectBall(e.target);
   });
 });
+
+const btnOpenGameOption = document
+  .getElementById('game')
+  .addEventListener('click', () => {
+    gameOptionsContainer.classList.remove('hide-modal');
+    document
+      .querySelectorAll('.gameOptions__game')
+      .forEach(game => game.classList.remove('hide-modal'));
+  });
+
+const btnCloseGameOption = document
+  .getElementById('closeGameOption')
+  .addEventListener('click', () => {
+    gameOptionsContainer.classList.add('hide-modal');
+    console.log('Helow!');
+  });
 /////     END BOARD CREATION     /////
 
 function selectBall(ball) {
@@ -107,7 +159,8 @@ document.getElementById('timer').addEventListener('click', () => {
     }
     timer -= 1;
 
-    document.getElementById('stroke-3').style.width =
-      (initialTimer - timer) / 100;
+    document
+      .getElementById('stroke-3')
+      .setAttribute('style', `width:${(timer / initialTimer) * 100}%`);
   }, 1000);
 });
