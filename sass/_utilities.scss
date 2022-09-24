@@ -1,7 +1,11 @@
 .hide-modal {
-    display: none;
+    display: none !important;
 }
 
 .moveRight {
     animation: moveToRight .2s ease-in;
+}
+
+.inactive {
+    filter: brightness(0.8) blur(2px) !important;
 }

@@ -4,7 +4,7 @@
     position: relative;
     border-radius: 0;
     min-width: 10rem;
-    width: 33.33%;
+    width: 25%;
     height: 90%;
     border: none;
     box-shadow: 1px 0px 4px var(--c-gray-dark);
@@ -36,4 +36,109 @@
             filter: invert(100%) sepia(0%) saturate(7427%) hue-rotate(23deg) brightness(118%) contrast(118%);
         }
     }
+
+
+
+}
+
+.inputMenu {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    border-radius: 0;
+    min-width: 10rem;
+    width: 33.33%;
+    height: 90%;
+    border: none;
+    box-shadow: 1px 0px 4px var(--c-gray-dark);
+    z-index: 50;
+    transition: all .3s;
+    background: linear-gradient(to right bottom, var(--c-white), var(--c-gray-light));
+
+
+    input[type="number"] {
+        text-align: center;
+        font-weight: 600;
+        color: var(--c-gray-dark);
+        background: linear-gradient(to right bottom, var(--c-white), var(--c-gray-light));
+        border-radius: 5px;
+        width: 8rem;
+    }
+
+    input[type="button"] {
+        text-align: center;
+        font-weight: 600;
+        background: var(--c-gray-dark);
+        color: var(--c-gray-light);
+        transition: all .2s;
+        width: 8rem;
+
+        &:hover {
+            background: var(--c-gray-light);
+            color: var(--c-gray-dark);
+            transform: translateY(-.4px);
+
+        }
+
+        &:active {
+            transform: translateY(.4px);
+            background: var(--c-gray-light);
+            color: var(--c-gray-dark);
+
+        }
+
+    }
+
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 4rem;
+    height: 2rem;
+    margin-bottom: .5rem;
+
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 1.3rem;
+    width: 1.5rem;
+    left: 4px;
+    bottom: 3.8px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: var(--c-red-lighter);
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    transform: translateX(1.7rem);
 }

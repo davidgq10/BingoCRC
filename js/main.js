@@ -1,16 +1,92 @@
 'use strict';const preventFormater = 1;
 const selectedBalls = [];
-let timer = 60;
+let timeInput = 0;
 
 /////     GET HTML REFERENCES     /////
 const recentBallsContainer = document.getElementById('recent-ball');
 const gameOptionsContainer = document.getElementById('gameOptions');
 const celebration = document.getElementById('celebration');
+const sidebarContainer = document.getElementById('sitebar');
 const recentBallsTitle = document.getElementById('recent-balls-title');
+const TimerModal = document.getElementById('timerModal');
+const btnAnimate = document
+  .getElementById('animate')
+  .addEventListener('click', e => {
+    console.log(e.target.checked);
+    if (e.target.checked) {
+      document
+        .querySelectorAll('.ball')
+        .forEach(ball => ball.classList.add('animateSeleted'));
+    } else {
+      document
+        .querySelectorAll('.ball')
+        .forEach(ball => ball.classList.remove('animateSeleted'));
+    }
+  });
+
+const cargarSonido = function (fuente) {
+  const sonido = document.createElement('audio');
+  sonido.src = fuente;
+  sonido.setAttribute('preload', 'auto');
+  sonido.setAttribute('controls', 'none');
+  sonido.style.display = 'none'; // <-- oculto
+  document.body.appendChild(sonido);
+  return sonido;
+};
+
 const btnCelebrate = document
   .getElementById('celebrate')
   .addEventListener('click', () => {
+    const sonido = cargarSonido('audio/celebrations.mp3');
+    sonido.play();
     celebration.classList.remove('hide-modal');
+  });
+
+const btnStartTimer = document
+  .getElementById('timeStart')
+  .addEventListener('click', () => {
+    timeInput = parseInt(document.getElementById('timeInput').value) * 60;
+    if (timeInput > 0) {
+      console.log(timeInput);
+      TimerModal.classList.remove('hide-modal');
+
+      let timerSet = setInterval(function () {
+        const time = [];
+        const minutes = Math.floor(timeInput / 60);
+        const seconds = Math.trunc((timeInput / 60 - minutes) * 60);
+
+        if (minutes > 9) [time[0], time[1]] = String(minutes);
+        if (minutes <= 9) time[1] = String(minutes);
+        if (seconds > 9) [time[2], time[3]] = String(seconds);
+        if (seconds <= 9) time[3] = String(seconds);
+        document.getElementById('number-1').innerText = time[0] ?? 0;
+        document.getElementById('number-2').innerText = time[1] ?? 0;
+        document.getElementById('number-3').innerText = time[2] ?? 0;
+        document.getElementById('number-4').innerText = time[3] ?? 0;
+
+        if (timeInput === 0) {
+          clearInterval(timerSet);
+        }
+        timeInput -= 1;
+      }, 1000);
+    }
+  });
+
+const btnTimer = document
+  .getElementById('timerOpen')
+  .addEventListener('click', () => {
+    if (
+      document.getElementById('btn-timeInput').classList.contains('hide-modal')
+    ) {
+      document.getElementById('btn-timeInput').classList.remove('hide-modal');
+    } else {
+      document.getElementById('btn-timeInput').classList.add('hide-modal');
+    }
+  });
+const btnCloseTimer = document
+  .getElementById('closeTimer')
+  .addEventListener('click', () => {
+    TimerModal.classList.add('hide-modal');
   });
 
 const btnRestart = document
@@ -58,12 +134,13 @@ const gameOptions = games.forEach(
   game =>
     (gameOptionsContainer.innerHTML += `<img  id='${game.nombre}' class='gameOptions__game' src='${game.imagen}' alt='${game.nombre}'>`)
 );
+
 document.querySelectorAll('.gameOptions__game').forEach(game =>
   game.addEventListener('click', e => {
     document.getElementById(e.target.id).classList.add('hide-modal');
+    sidebarContainer.innerHTML += `<img  id='game${e.target.id}' class='sidebar__game' src='${e.target.src}' alt='${e.target.id}'>`;
   })
 );
-
 /////     END START VARIABLES DECLRATION     /////
 
 /////     BOARD CREATION     /////
@@ -82,17 +159,31 @@ balls.forEach(ball => {
 const btnOpenGameOption = document
   .getElementById('game')
   .addEventListener('click', () => {
-    gameOptionsContainer.classList.remove('hide-modal');
+    document.getElementById('gameOptions').classList.remove('hide-modal');
+
+    const games = document.querySelectorAll('.sidebar__game');
+    games.forEach(game => document.getElementById(game.id).remove());
+
     document
       .querySelectorAll('.gameOptions__game')
-      .forEach(game => game.classList.remove('hide-modal'));
+      .forEach(element => element.classList.remove('hide-modal'));
   });
 
 const btnCloseGameOption = document
   .getElementById('closeGameOption')
   .addEventListener('click', () => {
     gameOptionsContainer.classList.add('hide-modal');
-    console.log('Helow!');
+    const sidebarGames = document.querySelectorAll('.sidebar__game');
+    console.log(sidebarGames);
+    sidebarGames.forEach(card =>
+      card.addEventListener('click', e => {
+        if (e.target.classList.contains('inactive')) {
+          e.target.classList.remove('inactive');
+        } else {
+          e.target.classList.add('inactive');
+        }
+      })
+    );
   });
 /////     END BOARD CREATION     /////
 
@@ -101,6 +192,7 @@ function selectBall(ball) {
     ball.classList.remove('selected');
     const indexBall = selectedBalls.indexOf(parseInt(ball.id));
     selectedBalls.splice(indexBall, 1);
+    document.getElementById('recent-' + ball.id).remove();
     console.log(selectedBalls);
   } else {
     ball.classList.add('selected');
@@ -141,26 +233,8 @@ function removeLastRecentBall() {
 
 function addNewRecentBall(ball) {
   const newLi = document.createElement('li');
-  newLi.id = ball.id;
+  newLi.id = 'recent-' + ball.id;
   newLi.classList.add('recent-ball__ball', 'recent-ball__ball--1');
   newLi.innerText = ball.id;
   recentBallsTitle.insertAdjacentElement('afterEnd', newLi);
 }
-
-document.getElementById('timer').addEventListener('click', () => {
-  const initialTimer = timer;
-  let timerSet = setInterval(function () {
-    const minutes = Math.trunc(timer / 60);
-    const seconds = Math.trunc((timer / 60 - Math.floor(timer / 60)) * 60);
-    document.getElementById('myTimeMinute').innerText = minutes;
-    document.getElementById('myTimeSecond').innerText = seconds;
-    if (timer === 0) {
-      clearInterval(timerSet);
-    }
-    timer -= 1;
-
-    document
-      .getElementById('stroke-3')
-      .setAttribute('style', `width:${(timer / initialTimer) * 100}%`);
-  }, 1000);
-});

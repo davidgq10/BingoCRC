@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="/img/bingoIco.png">
     <link rel="stylesheet" href="css/style.css">
     <title>¡Bingo!</title>
 </head>
@@ -18,34 +19,79 @@
         </button>
     </div>
 
+    <div id="timerModal" class="modalTimer hide-modal">
+        <button class="btn btn--blue" id="closeTimer">
+            <img src="img/close.svg" alt="Cerrar">
+        </button>
+        <div class="time">
+            <h1 id="number-1">0</h1>
+            <h1 id="number-2">0</h1>
+            <h1 id="twopoints">:</h1>
+            <h1 id="number-3">0</h1>
+            <h1 id="number-4">0</h1>
+        </div>
+    </div>
+
+
+
     <div class="grid-container">
 
 
         <div class="header">
-            <h1 id="myTimeMinute"></h1>
-            <h1 id="myTimeSecond"></h1>
             <div class="header__title">
                 <img src="/img/CruzRoja.jpg" class="header__icon" alt="Logo Cruz Roja"></img>
-                <h3 class="header__text">Cruz Roja Costarricense</h3>
+                <h3 class="header__text">Cruz Roja Costarricense, Com. Aux. en Frailes</h3>
             </div>
 
             <nav class="menu">
+                <div class="credits">
+                    <h3>Created by: <a href="https://www.linkedin.com/in/davidgq10/" target="_blank"> David Garbanzo</a>
+                    </h3>
+                    <p>Todos los derechos reservados.</p>
+                    <p>
+                        <a href="https://github.com/davidgq10" target="_blank">
+                            <img src="img/iconmonstr-github-1.svg" alt="">
+                        </a>
+                        <a href="mailto:dgarbanzo@gmail.com" target="_blank"><img src="img/iconmonstr-email-10.svg"
+                                alt=""></a>
+                        <a href="https://www.linkedin.com/in/davidgq10/" target="_blank"><img
+                                src="img/iconmonstr-linkedin-4.svg" alt=""></a>
+                    </p>
+                </div>
+
+                <button class="btn btn--blue">
+                    <h4>Zoom</h4>
+                    <h5>Aumentar: Ctrl + </h5>
+                    <h5> Alejar: Ctrl - </h5>
+                </button>
+                <button class="btn btn--blue">
+                    <label class="switch">
+                        <input type="checkbox" id="animate">
+                        <span class="slider"></span>
+                    </label>
+                    <h5>Animación</h5>
+                </button>
+
                 <button class="btn btn--blue" id="celebrate">
+
                     <img src="img/party.svg" alt="Celebrate">
                     <h5>Celebrar</h5>
                 </button>
                 <button class="btn btn--blue" id="game"> <img src="img/gamepad.svg" alt="new">
-                    <h5>Juegos</h5>
+                    <h5>Definir juegos</h5>
                 </button>
-                <button class="btn btn--blue" id="timer">
+                <button class="btn btn--blue" id="timerOpen">
                     <img src="img/timer.svg" alt="Celebrate">
                     <h5>Temporizador</h5>
                 </button>
-                <button class="btn btn--blue" id="ads"> <img src="img/pincture-collection.svg" alt="ads">
+                <div class="inputMenu hide-modal" id="btn-timeInput">
+                    <input type="number" name="" placeholder="minutos" id="timeInput">
+                    <input id="timeStart" type="button" value="Iniciar">
+                </div>
+                <!-- <button class="btn btn--blue" id="ads"> <img src="img/pincture-collection.svg" alt="ads">
                     <h5>Anuncios</h5>
-                </button>
-                <button class="btn btn--red" disabled="disabled" id="restart"> <img src="img/power-restart.svg"
-                        alt="restart">
+                </button> -->
+                <button class="btn btn--red" id="restart"> <img src="img/power-restart.svg" alt="restart">
                     <h5>Reiniciar</h5>
                 </button>
 
@@ -58,20 +104,13 @@
             <h2 id="recent-balls-title">Últimas bolas: </h2>
         </div>
 
-        <div class="sitebar">
-
-
-
-            <img src="img/imgLetraA.png" alt="">
-            <img src="img/imgLetraE.png" alt="">
-            <img src="img/imgLetraF.png" alt="">
-
+        <div id="sitebar" class="sitebar">
         </div>
 
 
-        <div class="ads">
+        <!-- <div class="ads">
             <img src="img/banner_top_pollitosdicen.jpg" alt="ads">
-        </div>
+        </div> -->
 
         <div id="celebration" class="celebration hide-modal">
             <img class="celebration__text" src="img/bingo.png" alt="">
